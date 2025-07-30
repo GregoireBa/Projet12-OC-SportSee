@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #ffffff;
+  color: #20253a;
+  line-height: 1.6;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Variables CSS pour les couleurs */
+:root {
+  --primary-color: #ff0101;
+  --secondary-color: #020203;
+  --background-color: #ffffff;
+  --card-background: #fbfbfb;
+  --text-primary: #20253a;
+  --text-secondary: #74798c;
+  --border-color: #dedede;
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
