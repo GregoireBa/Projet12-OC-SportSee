@@ -1,0 +1,126 @@
+.page404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+}
+
+.page404-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.page404-icon {
+  margin-bottom: 30px;
+}
+
+.page404-number {
+  font-size: 120px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 4px rgba(255, 1, 1, 0.1);
+  display: block;
+  line-height: 1;
+}
+
+.page404-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.page404-message {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.page404-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.page404-button {
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+  min-width: 180px;
+}
+
+.page404-button.primary {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  box-shadow: var(--shadow-medium);
+}
+
+.page404-button.primary:hover {
+  background-color: #e60000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 1, 1, 0.3);
+}
+
+.page404-button.secondary {
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+}
+
+.page404-button.secondary:hover {
+  background-color: var(--background-color);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page404-number {
+    font-size: 80px;
+  }
+
+  .page404-title {
+    font-size: 24px;
+  }
+
+  .page404-message {
+    font-size: 16px;
+  }
+
+  .page404-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page404-button {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page404 {
+    padding: 20px 10px;
+  }
+
+  .page404-number {
+    font-size: 60px;
+  }
+
+  .page404-title {
+    font-size: 20px;
+  }
+
+  .page404-message {
+    font-size: 14px;
+  }
+}

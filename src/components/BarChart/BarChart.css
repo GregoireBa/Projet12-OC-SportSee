@@ -1,0 +1,112 @@
+/* Container principal */
+.activity-chart-clean {
+  background: #fbfbfb;
+  border-radius: 5px;
+  padding: 24px;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header avec titre et légende */
+.activity-header-clean {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* Titre */
+.activity-title-clean {
+  font-size: 15px;
+  font-weight: 500;
+  color: #20253a;
+  margin: 0;
+}
+
+/* Container légende */
+.activity-legend-clean {
+  display: flex;
+  gap: 32px;
+}
+
+/* Item de légende */
+.legend-item-clean {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dot coloré */
+.legend-dot-clean {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-dot-weight-clean {
+  background-color: #282d30;
+}
+
+.legend-dot-calories-clean {
+  background-color: #e60000;
+}
+
+/* Label légende */
+.legend-label-clean {
+  font-size: 14px;
+  font-weight: 500;
+  color: #74798c;
+}
+
+/* Zone graphique */
+.activity-chart-area-clean {
+  flex: 1;
+  position: relative;
+}
+
+/* Zone vide */
+.activity-empty-clean {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #74798c;
+}
+
+/* Tooltip */
+.activity-tooltip-clean {
+  background: #e60000;
+  border: none;
+  border-radius: 2px;
+  padding: 8px 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.activity-tooltip-clean p {
+  margin: 0;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.activity-tooltip-clean p:first-child {
+  margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .activity-chart-clean {
+    height: 280px;
+    padding: 20px;
+  }
+
+  .activity-header-clean {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}

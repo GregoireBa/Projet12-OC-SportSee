@@ -1,19 +1,24 @@
+import { PERFORMANCE_TRANSLATIONS, DAYS_MAP } from "../utils/constants.js";
+
 /**
  * Classe User pour standardiser les données utilisateur
  */
 export class User {
   constructor(userData) {
-    this.id = userData.id;
-    this.firstName = userData.userInfos?.firstName || "";
-    this.lastName = userData.userInfos?.lastName || "";
-    this.age = userData.userInfos?.age || 0;
+    // Gestion de la structure API vs Mock
+    const data = userData.data || userData;
 
-    this.score = userData.todayScore || userData.score || 0;
+    this.id = data.id;
+    this.firstName = data.userInfos?.firstName || "";
+    this.lastName = data.userInfos?.lastName || "";
+    this.age = data.userInfos?.age || 0;
 
-    this.calories = userData.keyData?.calorieCount || 0;
-    this.proteins = userData.keyData?.proteinCount || 0;
-    this.carbohydrates = userData.keyData?.carbohydrateCount || 0;
-    this.lipids = userData.keyData?.lipidCount || 0;
+    this.score = data.todayScore || data.score || 0;
+
+    this.calories = data.keyData?.calorieCount || 0;
+    this.proteins = data.keyData?.proteinCount || 0;
+    this.carbohydrates = data.keyData?.carbohydrateCount || 0;
+    this.lipids = data.keyData?.lipidCount || 0;
   }
 
   /**
@@ -64,9 +69,12 @@ export class User {
  */
 export class UserActivity {
   constructor(activityData) {
-    this.userId = activityData.userId;
-    this.sessions = Array.isArray(activityData.sessions)
-      ? activityData.sessions.map((session) => ({
+    // Gestion flexible de la structure des données
+    const data = activityData.data || activityData;
+
+    this.userId = data.userId;
+    this.sessions = Array.isArray(data.sessions)
+      ? data.sessions.map((session) => ({
           day: session.day,
           weight: session.kilogram,
           calories: session.calories,
@@ -88,9 +96,12 @@ export class UserActivity {
  */
 export class UserAverageSessions {
   constructor(sessionsData) {
-    this.userId = sessionsData.userId;
+    // Gestion flexible de la structure des données
+    const data = sessionsData.data || sessionsData;
+
+    this.userId = data.userId;
     this.sessions =
-      sessionsData.sessions?.map((session) => ({
+      data.sessions?.map((session) => ({
         day: session.day,
         sessionLength: session.sessionLength,
         // Conversion du numéro de jour en lettre
@@ -104,8 +115,7 @@ export class UserAverageSessions {
    * @returns {string} - Lettre du jour
    */
   getDayLetter(dayNumber) {
-    const days = ["L", "M", "M", "J", "V", "S", "D"];
-    return days[dayNumber - 1] || "";
+    return DAYS_MAP[dayNumber] || "";
   }
 
   /**
@@ -122,10 +132,13 @@ export class UserAverageSessions {
  */
 export class UserPerformance {
   constructor(performanceData) {
-    this.userId = performanceData.userId;
-    this.kind = performanceData.kind || {};
-    this.data = Array.isArray(performanceData.data)
-      ? performanceData.data.map((item) => ({
+    // Gestion flexible de la structure des données
+    const data = performanceData.data || performanceData;
+
+    this.userId = data.userId;
+    this.kind = data.kind || {};
+    this.data = Array.isArray(data.data)
+      ? data.data.map((item) => ({
           value: item.value,
           kind: item.kind,
           label: this.kind[item.kind] || "",
@@ -138,21 +151,19 @@ export class UserPerformance {
    * Traduit les labels en français
    */
   getFrenchLabel(englishLabel) {
-    const translations = {
-      cardio: "Cardio",
-      energy: "Énergie",
-      endurance: "Endurance",
-      strength: "Force",
-      speed: "Vitesse",
-      intensity: "Intensité",
-    };
-    return translations[englishLabel] || englishLabel;
+    return PERFORMANCE_TRANSLATIONS[englishLabel] || englishLabel;
   }
 
   /**
    * Retourne les données formatées pour les graphiques
    */
   getFormattedPerformances() {
-    return this.data;
+    // Ordre spécifique pour correspondre à la maquette (sens horaire depuis le haut)
+    const order = ['intensity', 'speed', 'strength', 'endurance', 'energy', 'cardio'];
+    
+    return order.map(kindKey => {
+      const item = this.data.find(d => d.label.toLowerCase() === kindKey);
+      return item || { value: 0, frenchLabel: kindKey };
+    });
   }
 }

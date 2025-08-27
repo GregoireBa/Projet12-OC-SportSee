@@ -5,8 +5,9 @@ import {
   UserAverageSessions,
   UserPerformance,
 } from "../models/User.js";
+import { API_BASE_URL } from "../utils/constants.js";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = API_BASE_URL;
 
 /**
  * Implémentation du service de données via API

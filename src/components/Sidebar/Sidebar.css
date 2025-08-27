@@ -21,7 +21,7 @@
 .activity-btn {
   width: 64px;
   height: 64px;
-  background-color: #ffffff;
+  background-color: var(--background-color);
   border: none;
   border-radius: 6px;
   display: flex;
@@ -59,7 +59,7 @@
 }
 
 .copyright {
-  color: #ffffff;
+  color: var(--background-color);
   font-size: 12px;
   font-weight: 500;
   opacity: 0.8;

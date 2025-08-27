@@ -1,7 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useUserData } from "../../hooks/useUserData";
-import NutritionCard from "./NutritionCard/NutritionCard";
+import NutritionCard from "../NutritionCard/NutritionCard";
+import BarChart from "../BarChart/BarChart";
+import LineChart from "../LineChart/LineChart";
+import RadarChart from "../RadarChart/RadarChart";
+import RadialBarChart from "../RadialBarChart/RadialBarChart";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -38,48 +42,29 @@ const Dashboard = () => {
       <div className="dashboard-content">
         <div className="charts-section">
           <div className="chart-row">
-            <div className="chart-container activity-chart">
-              <h3>Activité quotidienne</h3>
-              <div className="chart-placeholder">
-                <p>Graphique d'activité (poids/calories)</p>
-                <p>
-                  Données disponibles :{" "}
-                  {userData.activity?.sessions?.length || 0} sessions
-                </p>
-              </div>
+            <div className="activity-chart">
+              <BarChart
+                data={userData.activity}
+                title="Activité quotidienne"
+              />
             </div>
           </div>
 
           <div className="chart-row">
-            <div className="chart-container average-sessions-chart">
-              <h3>Durée moyenne des sessions</h3>
-              <div className="chart-placeholder">
-                <p>Graphique des sessions moyennes</p>
-                <p>
-                  Données disponibles :{" "}
-                  {userData.averageSessions?.sessions?.length || 0} sessions
-                </p>
-              </div>
-            </div>
+            <LineChart
+              data={userData.averageSessions}
+              title="Durée moyenne des sessions"
+            />
 
-            <div className="chart-container performance-chart">
-              <h3>Performance</h3>
-              <div className="chart-placeholder">
-                <p>Graphique radar des performances</p>
-                <p>
-                  Données disponibles :{" "}
-                  {userData.performance?.data?.length || 0} métriques
-                </p>
-              </div>
-            </div>
+            <RadarChart
+              data={userData.performance}
+              title="Performance"
+            />
 
-            <div className="chart-container score-chart">
-              <h3>Score</h3>
-              <div className="chart-placeholder">
-                <p>Graphique du score</p>
-                <p>{user.getScorePercentage()}% de votre objectif</p>
-              </div>
-            </div>
+            <RadialBarChart
+              data={user.getScorePercentage()}
+              title="Score"
+            />
           </div>
         </div>
 
