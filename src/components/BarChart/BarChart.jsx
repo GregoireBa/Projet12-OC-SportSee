@@ -48,7 +48,6 @@ const BarChart = ({
 
   return (
     <div className="activity-chart-clean">
-      {/* Header avec titre et légende */}
       <div className="activity-header-clean">
         <h3 className="activity-title-clean">{title}</h3>
         <div className="activity-legend-clean">

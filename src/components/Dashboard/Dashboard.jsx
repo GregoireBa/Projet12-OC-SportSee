@@ -51,20 +51,26 @@ const Dashboard = () => {
           </div>
 
           <div className="chart-row">
-            <LineChart
-              data={userData.averageSessions}
-              title="Durée moyenne des sessions"
-            />
+            <div className="chart-wrapper">
+              <LineChart
+                data={userData.averageSessions}
+                title="Durée moyenne des sessions"
+              />
+            </div>
 
-            <RadarChart
-              data={userData.performance}
-              title="Performance"
-            />
+            <div className="chart-wrapper">
+              <RadarChart
+                data={userData.performance}
+                title="Performance"
+              />
+            </div>
 
-            <RadialBarChart
-              data={user.getScorePercentage()}
-              title="Score"
-            />
+            <div className="chart-wrapper">
+              <RadialBarChart
+                data={user.getScorePercentage()}
+                title="Score"
+              />
+            </div>
           </div>
         </div>
 

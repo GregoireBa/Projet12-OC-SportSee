@@ -22,6 +22,7 @@ export const useUserData = (userId) => {
 
         if (result.success) {
           setUserData(result.data);
+          console.log("Fetched user data:", result.data);
         } else {
           setError("Unable to load user data");
         }

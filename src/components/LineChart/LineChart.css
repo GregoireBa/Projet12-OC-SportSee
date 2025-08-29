@@ -1,12 +1,13 @@
 .average-sessions-chart {
+  width: 100%;
+  height: 263px;
   background: #ff0000;
   border-radius: 5px;
-  width: 258px;
-  height: 263px;
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
+  z-index: 1;
 }
 
 .shadow-overlay {
@@ -15,7 +16,7 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.1);
   pointer-events: none;
-  z-index: 5;
+  z-index: 3;
 }
 
 .average-sessions-title {
@@ -32,7 +33,7 @@
 .chart-area {
   flex: 1;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 
 .average-sessions-empty {
@@ -62,15 +63,39 @@
 
 @media (max-width: 1024px) {
   .average-sessions-chart {
-    width: 100%;
     height: 200px;
   }
 
   .average-sessions-title {
-    margin: 20px 0 0 20px;
+    margin: 20px 0 0 25px;
+    font-size: 14px;
+    max-width: 120px;
   }
 
   .chart-area {
     padding: 0 8px 15px 8px;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 780px) {
+  .average-sessions-chart {
+    height: 180px;
+  }
+
+  .average-sessions-title {
+    margin: 15px 0 0 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .average-sessions-chart {
+    height: 180px;
+    margin-bottom: 20px;
+  }
+
+  .average-sessions-title {
+    margin: 15px 0 0 20px;
+    font-size: 13px;
   }
 }

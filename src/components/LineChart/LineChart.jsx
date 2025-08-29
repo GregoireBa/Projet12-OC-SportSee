@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   LineChart as RechartsLineChart,
   Line,
@@ -12,7 +12,7 @@ import "./LineChart.css";
 const LineChart = ({
   data,
   title = "Durée moyenne des sessions",
-  width = "258px",
+  width = "100%",
   height = "263px",
   backgroundColor = "#ff0000",
   titleColor = "rgba(255, 255, 255, 0.5)",
@@ -20,6 +20,21 @@ const LineChart = ({
   className = "",
 }) => {
   const [hoverPosition, setHoverPosition] = useState(null);
+  const [chartWidth, setChartWidth] = useState(258);
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    const updateChartWidth = () => {
+      if (chartRef.current) {
+        const rect = chartRef.current.getBoundingClientRect();
+        setChartWidth(rect.width);
+      }
+    };
+
+    updateChartWidth();
+    window.addEventListener('resize', updateChartWidth);
+    return () => window.removeEventListener('resize', updateChartWidth);
+  }, []);
 
   if (!data?.sessions?.length) {
     return (
@@ -83,6 +98,7 @@ const LineChart = ({
 
   return (
     <div
+      ref={chartRef}
       className={`average-sessions-chart ${className}`}
       style={{ backgroundColor, width, height }}
     >
@@ -91,7 +107,7 @@ const LineChart = ({
           className="shadow-overlay"
           style={{
             left: `${hoverPosition}px`,
-            width: `${258 - hoverPosition}px`,
+            width: `${chartWidth - hoverPosition}px`,
           }}
         />
       )}

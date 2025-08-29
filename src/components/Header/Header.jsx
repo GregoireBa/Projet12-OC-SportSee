@@ -8,18 +8,20 @@ const Header = () => {
       <Link to="/" className="logo">
         <img src="/logoSportSee.svg" alt="SportSee" className="logo-image" />
       </Link>
-      <Link to="/" className="nav-link">
-        Accueil
-      </Link>
-      <Link to="/profil" className="nav-link">
-        Profil
-      </Link>
-      <Link to="/reglage" className="nav-link">
-        Réglage
-      </Link>
-      <Link to="/communaute" className="nav-link">
-        Communauté
-      </Link>
+      <nav className="nav" role="navigation" aria-label="Navigation principale">
+        <Link to="/" className="nav-link">
+          Accueil
+        </Link>
+        <Link to="/profil" className="nav-link">
+          Profil
+        </Link>
+        <Link to="/reglage" className="nav-link">
+          Réglage
+        </Link>
+        <Link to="/communaute" className="nav-link">
+          Communauté
+        </Link>
+      </nav>
     </header>
   );
 };
